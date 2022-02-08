@@ -89,7 +89,7 @@ class TestinomialController extends Controller
   public function delete_record($id)
   {
        Testinomial::where('id',$id)->delete();
-       return redirect()->route('testinomial-list')->with('message','Record has been Delete');
+       return redirect()->back()->with('message','Record has been Delete');
   }
 
 

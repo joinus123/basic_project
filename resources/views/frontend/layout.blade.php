@@ -121,12 +121,16 @@
                                     <a href="#!" class="send-btn"><i class="far fa-paper-plane"></i></a>
                                 </form>
                             </li>
+                            @foreach ($socialmedia_icon as $view_icon)
+
+
                             <li class="social-icon">
-                                <a href="#!" class="social-item"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#!" class="social-item"><i class="fab fa-instagram"></i></a>
-                                <a href="#!" class="social-item"><i class="fab fa-twitter"></i></a>
-                                <a href="#!" class="social-item"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#!" class="social-item"><i class="{{$view_icon['facebook_icon']}}"></i></a>
+                                <a href="#!" class="social-item"><i class="{{$view_icon['instragram_icon']}}"></i></a>
+                                <a href="#!" class="social-item"><i class="{{$view_icon['twitter_icon']}}"></i></a>
+                                <a href="#!" class="social-item"><i class="{{$view_icon['linkedin_icon']}}"></i></a>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

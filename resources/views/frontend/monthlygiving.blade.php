@@ -50,68 +50,38 @@
 <section class="monthly-giving-sec-2">
 	<div class="container">
 		<div class="row justify-content-md-center">
-			<div class="col-lg-4 col-md-6 col-12">
-				<div class="gift-card" data-aos="fade-up" data-aos-duration="1000">
-					<div class="img-box">
-						<img src="assets/images/gift-card-img-1.png" alt="img" class="img-fluid w-100">
-						<div class="progress">
-							<div class="progress-bar" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-						<p class="abs-tag">Successful</p>
-					</div>
-					<div class="text-box-1">
-						<p class="text-col-1">Current <span>$6,540</span></p>
-						<p class="text-col-2">100%</p>
-						<p class="text-col-3">Target <span>$15,540</span></p>
-					</div>
-					<div class="text-box-2">
-						<p class="heading">Lorem Ispum Is a Dummy</p>
-						<p class="tagline">Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Quis ipsum.</p>
-					</div>
-				</div>
-			</div>
+
+
+
+
+
+
+           @foreach ($content_monthly as $item)
+
 
 			<div class="col-lg-4 col-md-6 col-12">
-				<div class="gift-card" data-aos="fade-up" data-aos-duration="1000">
-					<div class="img-box">
-						<img src="assets/images/gift-card-img-1.png" alt="img" class="img-fluid w-100">
-						<div class="progress">
-							<div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-						<p class="abs-tag">Successful</p>
-					</div>
-					<div class="text-box-1">
-						<p class="text-col-1">Current <span>$6,540</span></p>
-						<p class="text-col-2">100%</p>
-						<p class="text-col-3">Target <span>$15,540</span></p>
-					</div>
-					<div class="text-box-2">
-						<p class="heading">Lorem Ispum Is a Dummy</p>
-						<p class="tagline">Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Quis ipsum.</p>
-					</div>
-				</div>
-			</div>
 
-			<div class="col-lg-4 col-md-6 col-12">
 				<div class="gift-card mb-0" data-aos="fade-up" data-aos-duration="1000">
 					<div class="img-box">
-						<img src="assets/images/gift-card-img-1.png" alt="img" class="img-fluid w-100">
+						<img src="{{asset('images/'.$item->image)}}" alt="img" class="img-fluid w-100">
 						<div class="progress">
 							<div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 						</div>
 						<p class="abs-tag">Successful</p>
 					</div>
 					<div class="text-box-1">
-						<p class="text-col-1">Current <span>$6,540</span></p>
-						<p class="text-col-2">100%</p>
-						<p class="text-col-3">Target <span>$15,540</span></p>
+						<p class="text-col-1">Current <span>${{$item->current_amount}}</span></p>
+						<p class="text-col-2">{{$item->percentage}}%</p>
+						<p class="text-col-3">Target <span>${{$item->target_amount}}</span></p>
 					</div>
 					<div class="text-box-2">
-						<p class="heading">Lorem Ispum Is a Dummy</p>
-						<p class="tagline">Lorem ipsum dolor sit amet,consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore aliqua. Quis ipsum.</p>
+						<p class="heading">{{$item->h1}}</p>
+						<p class="tagline">{!!$item->p1!!}</p>
 					</div>
 				</div>
-			</div>
+            </div>
+            @endforeach
+
 		</div>
 	</div>
 </section>

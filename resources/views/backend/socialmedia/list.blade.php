@@ -15,11 +15,11 @@
                       {{-- @if(Session::has('message'))
                       <p class="{{Session::get('class')}}">{{Session::get('message')}}</p>
                       @endif --}}
-                      <h1 class="pull-left">Add Testinomial</h1>
+                      <h1 class="pull-left">Add Socialmedia Icon</h1>
                       </div>
 
                       <p>
-                        <a class="btn btn-primary" href="{{route('testinomial-form')}}"><span class="glyphicon glyphicon-plus"></span>Create New Record</a>
+                        <a class="btn btn-primary" href="{{route('create-form')}}"><span class="glyphicon glyphicon-plus"></span>Create Socialmedia Icon</a>
                     </p>
                     </div>
                     <div class="clearfix"></div>
@@ -27,40 +27,37 @@
                       <table class="table table-striped table-bordered zero-configuration">
                         <thead>
 
-
                           <tr>
 
                             <th>S.no</th>
-                            <th>Client Name</th>
-                            <th>Description</th>
-                            <th>Client Image</th>
+                            <th>Facebook Icon</th>
+                            <th>Instagram Icon</th>
+                            <th>Twitter Icon</th>
+                            <th>LinkedIn Icon</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach ($views as $view)
+                            @foreach ($socialmedia_link as $icon)
+
+
                        <tr>
-                           <td>{{$view['id']}}</td>
-                            <td>{{$view['client_name']}}</td>
-                            <td>{!!$view['description']!!}</td>
 
-
-                            <td>
-                               <img src="{{asset('/images/' . $view['client_image'])}}" style="width:80px"  alt="">
+                                <td>{{$icon['id']}}</td>
+                                <td>{{$icon['facebook_icon']}}</td>
+                                <td>{{$icon['instragram_icon']}}</td>
+                                <td>{{$icon['twitter_icon']}}</td>
+                                <td>{{$icon['linkedin_icon']}}</td>
+                               <td><div class="btn-group mr-1 mb-1">
+                                <button type="button" class="btn btn-drop-table btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i></button>
+                                <div class="dropdown-menu" >
+                                  <a class="dropdown-item" href="#" > <i class="fa fa-eye"></i>View </a>
+                                  <a class="dropdown-item" href="{{route('editform-socialmedia',$icon['id'])}}"  > <i class="fa fa-edit"></i>Edit</a>
+                                  <a class="dropdown-item" href="{{route('delete-list',$icon['id'])}}" > <i class="fa fa-trash"></i>Delete</a></div>
+                              </div>
                             </td>
-
-                            <td>
-                                <div class="btn-group mr-1 mb-1">
-                                     <button type="button" class="btn btn-drop-table btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i></button>
-                                     <div class="dropdown-menu" >
-                                       <a class="dropdown-item" href="#" > <i class="fa fa-eye"></i>View </a>
-                                       <a class="dropdown-item" href="{{route("editform-testinomial",$view['id'])}}"  > <i class="fa fa-edit"></i>Edit</a>
-                                       <a class="dropdown-item" href="{{route('delete-list',$view['id'])}}"> <i class="fa fa-trash"></i>Delete</a></div>
-                                   </div>
-                                </div>
-                         </td>
-                        </tr>
-                        @endforeach
+                         </tr>
+                         @endforeach
 
                         </tbody>
                       </table>

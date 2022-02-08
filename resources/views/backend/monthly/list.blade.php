@@ -15,11 +15,11 @@
                       {{-- @if(Session::has('message'))
                       <p class="{{Session::get('class')}}">{{Session::get('message')}}</p>
                       @endif --}}
-                      <h1 class="pull-left">Add Testinomial</h1>
+                      <h1 class="pull-left">Add Record</h1>
                       </div>
 
                       <p>
-                        <a class="btn btn-primary" href="{{route('testinomial-form')}}"><span class="glyphicon glyphicon-plus"></span>Create New Record</a>
+                        <a class="btn btn-primary" href="{{route('view-form')}}"><span class="glyphicon glyphicon-plus"></span>Create Record</a>
                     </p>
                     </div>
                     <div class="clearfix"></div>
@@ -27,40 +27,45 @@
                       <table class="table table-striped table-bordered zero-configuration">
                         <thead>
 
-
                           <tr>
 
                             <th>S.no</th>
-                            <th>Client Name</th>
-                            <th>Description</th>
-                            <th>Client Image</th>
+                            <th>Heading One</th>
+                            <th>Paragraph One</th>
+                            <th>Current Amount</th>
+                            <th>Percentage</th>
+                            <th>Target Amount</th>
+                            <th>Content Image</th>
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                        @foreach ($views as $view)
+
+                     @foreach ($monthly_link as $view_link)
+
+
                        <tr>
-                           <td>{{$view['id']}}</td>
-                            <td>{{$view['client_name']}}</td>
-                            <td>{!!$view['description']!!}</td>
+                                <td>{{$view_link['id']}}</td>
+                                <td>{{$view_link['h1']}}</td>
+                                <td>{!!$view_link['p1']!!}</td>
+                                <td>{{$view_link['current_amount']}}</td>
+                                <td>{!!$view_link['percentage']!!}</td>
+                                <td>{{$view_link['target_amount']}}</td>
+                                <td>
+                                    <img src="{{asset('images/' . $view_link['image'])}}" style="width:80px"  alt="">
+                                 </td>
 
-
-                            <td>
-                               <img src="{{asset('/images/' . $view['client_image'])}}" style="width:80px"  alt="">
+                               <td><div class="btn-group mr-1 mb-1">
+                                <button type="button" class="btn btn-drop-table btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i></button>
+                                <div class="dropdown-menu" >
+                                  <a class="dropdown-item" href="#" > <i class="fa fa-eye"></i>View </a>
+                                  <a class="dropdown-item" href="{{route('editform-monthly',$view_link['id'])}}"  > <i class="fa fa-edit"></i>Edit</a>
+                                  <a class="dropdown-item" href="{{route('delete-list',$view_link['id'])}}" > <i class="fa fa-trash"></i>Delete</a></div>
+                              </div>
                             </td>
+                         </tr>
+                         @endforeach
 
-                            <td>
-                                <div class="btn-group mr-1 mb-1">
-                                     <button type="button" class="btn btn-drop-table btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-ellipsis-v"></i></button>
-                                     <div class="dropdown-menu" >
-                                       <a class="dropdown-item" href="#" > <i class="fa fa-eye"></i>View </a>
-                                       <a class="dropdown-item" href="{{route("editform-testinomial",$view['id'])}}"  > <i class="fa fa-edit"></i>Edit</a>
-                                       <a class="dropdown-item" href="{{route('delete-list',$view['id'])}}"> <i class="fa fa-trash"></i>Delete</a></div>
-                                   </div>
-                                </div>
-                         </td>
-                        </tr>
-                        @endforeach
 
                         </tbody>
                       </table>
